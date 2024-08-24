@@ -24,78 +24,104 @@
 
                     <ul class="nav">
                         <li class="nav-item">
-                            <a href="#" class="nav-link d-flex align-items-center"><img src="img/Avatar-4.png" class="icon me-3">Luffy</a>
+                            <a href="#" class="nav-link d-flex align-items-center"><img :src="mainUser.avatar" class="icon me-3">Luffy</a>
+                        </li>
+                        <li class="nav-item ms-auto">
+                            <a href="#" class="nav-link d-flex align-items-center"><i class="fa-solid fa-circle-notch"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link"></a>
+                            <a href="#" class="nav-link d-flex align-items-center"><i class="fa-solid fa-message"></i></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link d-flex align-items-center"><i class="fa-solid fa-ellipsis-vertical"></i></a>
                         </li>
                     </ul>
 
                     <!--Banner di ricevimento notifiche-->
 
                     <div class="alert alert-info rounded-0 d-flex m-0">
-                        <div class="icon me-3">
-                            <i class="fa-solid fa-bell"></i>
+                        <div    class="icon me-3 " 
+                                :class="(notActive === true) ? '' : 'activated'"
+                                @click="switchNot()">
+                                
+                            <i class="fa-solid" :class="(notActive === true) ? 'fa-bell' : 'fa-bell-slash'"></i>
                         </div>
                         Bananati le notifiche, o no, fai un po' katy parry 
                     </div>
 
                     <!--Barra di ricerca-->
 
-                    <div class="input-group mt-1 mb-1">
+                    <form class="input-group mt-1 mb-1">
                         <button class="btn btn-light pe-3"><i class="fa-solid fa-magnifying-glass"></i></button>
-                        <input type="text" class="form-control">
-                    </div>
+                        <input type="text" class="form-control me-1" placeholder="Cerca o inizia una nuova chat">
+                    </form>
 
                     <!--Lista messagistica utenti-->
 
                     <div class="list-group-flush list-group overflow-auto flex-grow-1">
-                        <div class="list-group-item d-flex">
+                        
+                        <div class="list-group-item d-flex" v-for="(user, i) in importedUserList">
                             <div class="me-3">
-                                <img class="icon" src="img/Avatar-1.png">
+                                <img class="icon" :src="user.avatar">
                             </div>
                             <div>
-                                <div>Naruto Uzumaki</div>
-                                <small>Ultimo messaggio ricevuto</small>
+                                <div>{{user.name}}</div>
+                                <small>{{user.messages[user.messages.length - 1].text}}</small>
                             </div>
                         </div>
 
-                        <div class="list-group-item d-flex">
-                            <div class="me-3">
-                                <img class="icon" src="img/Avatar-2.png">
-                            </div>
-                            <div>
-                                <div>Son Goku</div>
-                                <small>Ultimo messaggio ricevuto</small>
-                            </div>
-                        </div>
-
-                        <div class="list-group-item d-flex">
-                            <div class="me-3">
-                                <img class="icon" src="img/Avatar-3.png">
-                            </div>
-                            <div>
-                                <div>Inuyasha</div>
-                                <small>Ultimo messaggio ricevuto</small>
-                            </div>
-                        </div>
                     </div>
 
                 </section>
 
                 <section id="right-col">
-                    <div class="chat-selected-user">
 
+                    <!--Parte superiore della chat con utente selezionato-->
+
+                    <div class="chat-selected-user">
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link d-flex align-items-center"><img src="img/Avatar-1.png" class="icon me-3">Naruto Uzumaki</a>
+                            </li>
+                            <li class="ms-auto nav-item">
+                                <a href="#" class="nav-link d-flex align-items-center">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link d-flex align-items-center">
+                                    <i class="fa-solid fa-link"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link d-flex align-items-center">
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
+
+                    <!--Chat con utente selezionato-->
 
                     <div class="chat-view">
+                        <div class="cloud-message m-1 my-mss">
+                            <p class="message">Ma sto rasengaaaaaaan</p>
+                            <p class="data">12/13/24</p>
+                        </div>
 
+                        <div class="cloud-message m-1 way-mss">
+                            <p class="message">Ma sto GamuGamuuu</p>
+                            <p class="data">12/13/24</p>
+                        </div>
                     </div>
 
-                    <div class="input-group chat-message">
-                        <button class="btn btn-light pe-3"><i class="fa-solid fa-poo"></i></button>
-                        <input class="form-control" type="text">
-                        <button class="btn btn-light ps-3"><i class="fa-solid fa-lemon"></i></button>
+                    <!--Input testo chat-->
+                    <div class="d-flex">
+                        <button class="btn btn-light border-end-0 pe-3"><i class="fa-solid fa-poo"></i></button>
+                        <form class="input-group chat-message">
+                            <input class="border-start-0 form-control" type="text" placeholder="Scrivi il tuo messaggio">
+                            <button class="btn btn-light ps-3"><i class="fa-solid fa-paper-plane"></i></button>
+                        </form>
                     </div>
 
                 </section>
@@ -106,6 +132,6 @@
     
 
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js" type="module"></script>
 </body>
 </html>
