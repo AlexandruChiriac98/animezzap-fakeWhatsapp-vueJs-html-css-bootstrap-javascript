@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bananazzap</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    </head>
+<body>
+
+    <div class="sfondo"></div>
+
+    <div id="app">
+
+            <div class="app-container">
+
+                <!--Parte a sinistre-->
+                <section id="left-col">
+
+                    <!--Navbar utente-->
+
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link d-flex align-items-center"><img src="img/Avatar-4.png" class="icon me-3">Luffy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link"></a>
+                        </li>
+                    </ul>
+
+                    <!--Banner di ricevimento notifiche-->
+
+                    <div class="alert alert-info rounded-0 d-flex m-0">
+                        <div class="icon me-3">
+                            <i class="fa-solid fa-bell"></i>
+                        </div>
+                        Bananati le notifiche, o no, fai un po' katy parry 
+                    </div>
+
+                    <!--Barra di ricerca-->
+
+                    <div class="input-group mt-1 mb-1">
+                        <button class="btn btn-light pe-3"><i class="fa-solid fa-magnifying-glass"></i></button>
+                        <input type="text" class="form-control">
+                    </div>
+
+                    <!--Lista messagistica utenti-->
+
+                    <div class="list-group-flush list-group overflow-auto flex-grow-1">
+                        <div class="list-group-item d-flex">
+                            <div class="me-3">
+                                <img class="icon" src="img/Avatar-1.png">
+                            </div>
+                            <div>
+                                <div>Naruto Uzumaki</div>
+                                <small>Ultimo messaggio ricevuto</small>
+                            </div>
+                        </div>
+
+                        <div class="list-group-item d-flex">
+                            <div class="me-3">
+                                <img class="icon" src="img/Avatar-2.png">
+                            </div>
+                            <div>
+                                <div>Son Goku</div>
+                                <small>Ultimo messaggio ricevuto</small>
+                            </div>
+                        </div>
+
+                        <div class="list-group-item d-flex">
+                            <div class="me-3">
+                                <img class="icon" src="img/Avatar-3.png">
+                            </div>
+                            <div>
+                                <div>Inuyasha</div>
+                                <small>Ultimo messaggio ricevuto</small>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
+                <section id="right-col">
+                    <div class="chat-selected-user">
+
+                    </div>
+
+                    <div class="chat-view">
+
+                    </div>
+
+                    <div class="input-group chat-message">
+                        <button class="btn btn-light pe-3"><i class="fa-solid fa-poo"></i></button>
+                        <input class="form-control" type="text">
+                        <button class="btn btn-light ps-3"><i class="fa-solid fa-lemon"></i></button>
+                    </div>
+
+                </section>
+
+            </div>
+
+    </div>
+    
+
+
+    <script src="js/main.js"></script>
+</body>
+</html>
