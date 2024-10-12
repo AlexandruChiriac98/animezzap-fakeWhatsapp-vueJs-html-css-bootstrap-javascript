@@ -5,11 +5,17 @@ body{
     background-color: blanchedalmond !important;
 }
 
-a{
+ul.nav li a{
+    padding: .5rem !important;
     text-decoration: none;
     color: black !important;
 }
 
+ul.nav {
+    width: 100%;
+    height: 80px;
+    background-color: beige;    
+}
 
 .icon{
     background-color: rgb(155, 153, 150);
@@ -73,10 +79,21 @@ a{
 }
 
 /***************LEFT SECTION****************/
-.nav {
-    width: 100%;
-    height: 80px;
-    background-color: beige;
+
+div.alert{
+    height: 100px;
+}
+
+#search{
+height: 40px;
+}
+
+div.list-group-flush{
+    height: calc( 100% - 80px - 40px - 100px);
+}
+
+div.list-group-flush .list-group-item{
+    cursor: pointer;
 }
 
 /***************RIGHT SECTION***************/

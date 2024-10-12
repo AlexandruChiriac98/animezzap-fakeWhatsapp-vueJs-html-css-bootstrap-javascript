@@ -39,7 +39,7 @@
 
                     <!--Banner di ricevimento notifiche-->
 
-                    <div class="alert alert-info rounded-0 d-flex m-0">
+                    <div class="alert overflow-hidden alert-info rounded-0 d-flex m-0">
                         <div    class="icon me-3 " 
                                 :class="(notActive === true) ? '' : 'activated'"
                                 @click="switchNot()">
@@ -51,7 +51,7 @@
 
                     <!--Barra di ricerca-->
 
-                    <form class="input-group mt-1 mb-1">
+                    <form id="search" class="input-group mt-1 mb-1">
                         <button class="btn btn-light pe-3"><i class="fa-solid fa-magnifying-glass"></i></button>
                         <input type="text" class="form-control me-1" placeholder="Cerca o inizia una nuova chat">
                     </form>
@@ -60,14 +60,16 @@
 
                     <div class="list-group-flush list-group overflow-auto flex-grow-1">
                         
-                        <div class="list-group-item d-flex" v-for="(user, i) in importedUserList">
-                            <div class="me-3">
-                                <img class="icon" :src="user.avatar">
-                            </div>
-                            <div>
-                                <div>{{user.name}}</div>
-                                <small>{{user.messages[user.messages.length - 1].text}}</small>
-                            </div>
+                        <div class="list-group-item d-flex"
+                            v-for="(user, i) in importedUserList"
+                            @click="selectUserChat(i)">
+                                <div class="me-3">
+                                    <img class="icon" :src="user.avatar">
+                                </div>
+                                <div>
+                                    <div>{{user.name}}</div>
+                                    <small>{{user.messages[user.messages.length - 1].text}}</small>
+                                </div>
                         </div>
 
                     </div>
@@ -81,7 +83,7 @@
                     <div class="chat-selected-user">
                         <ul class="nav">
                             <li class="nav-item">
-                                <a href="#" class="nav-link d-flex align-items-center"><img src="img/Avatar-1.png" class="icon me-3">Naruto Uzumaki</a>
+                                <a href="#" class="nav-link d-flex align-items-center"><img :src="importedUserList[selectedUser].avatar" class="icon me-3">{{importedUserList[selectedUser].name}}</a>
                             </li>
                             <li class="ms-auto nav-item">
                                 <a href="#" class="nav-link d-flex align-items-center">
@@ -104,24 +106,23 @@
                     <!--Chat con utente selezionato-->
 
                     <div class="chat-view">
-                        <div class="cloud-message m-1 my-mss">
-                            <p class="message">Ma sto rasengaaaaaaan</p>
-                            <p class="data">12/13/24</p>
-                        </div>
-
-                        <div class="cloud-message m-1 way-mss">
-                            <p class="message">Ma sto GamuGamuuu</p>
-                            <p class="data">12/13/24</p>
+                        <div class="cloud-message m-1"
+                            v-for="mss in importedUserList[selectedUser].messages" 
+                            :class="(mss.mine === true) ? 'my-mss' : 'way-mss'">
+                                <p class="message">{{mss.text}}</p>
+                                <p class="data">{{mss.date}}</p>
                         </div>
                     </div>
 
                     <!--Input testo chat-->
                     <div class="d-flex">
-                        <button class="btn btn-light border-end-0 pe-3"><i class="fa-solid fa-poo"></i></button>
-                        <form class="input-group chat-message">
-                            <input class="border-start-0 form-control" type="text" placeholder="Scrivi il tuo messaggio">
-                            <button class="btn btn-light ps-3"><i class="fa-solid fa-paper-plane"></i></button>
-                        </form>
+                        <div class="input-group chat-message">
+                            <button class="btn btn-light border-end-0 pe-3"><i class="fa-solid fa-poo"></i></button>
+                            <input v-model="newMessage.text" class="border-start-0 form-control" type="text" placeholder="Scrivi il tuo messaggio">
+                            <button @click="onClickSendMss()" class="btn btn-light ps-3">
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </div>
                     </div>
 
                 </section>

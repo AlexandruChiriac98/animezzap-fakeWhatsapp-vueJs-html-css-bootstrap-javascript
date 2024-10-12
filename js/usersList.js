@@ -22,8 +22,8 @@ export default [
         messages: [
             {
                 text: 'Ma sto Sayan Gooood',
-                data: '12/13/24',
-                mine: true
+                date: '12/13/24',
+                mine: true,
             },
             {
                 text: 'Ma sto Gears Fiiiifth',
@@ -38,12 +38,12 @@ export default [
         messages: [
             {
                 text: 'Ma sta Putenzaa',
-                data: '12/13/24',
+                date: '12/13/24',
                 mine: true
             },
             {
                 text: 'Ma sta Putenzaa',
-                data: '12/13/24',
+                date: '12/13/24',
                 mine: false
             }
         ]
